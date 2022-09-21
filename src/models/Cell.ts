@@ -1,8 +1,7 @@
 import {Colors} from "./Colors";
+import {Figure} from "./figures/Figure";
 import {Board} from "./Board";
-import { Figure } from "./figures/Figure";
 
-//класс ячеек
 export class Cell {
   readonly x: number;
   readonly y: number;
@@ -83,7 +82,7 @@ export class Cell {
     this.figure = figure;
     this.figure.cell = this;
   }
-  
+
   addLostFigure(figure: Figure) {
     figure.color === Colors.BLACK
       ? this.board.lostBlackFigures.push(figure)
@@ -101,5 +100,4 @@ export class Cell {
       this.figure = null;
     }
   }
-
 }

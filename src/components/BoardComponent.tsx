@@ -1,8 +1,8 @@
 import React, {FC, useEffect, useState} from 'react';
 import {Board} from "../models/Board";
+import CellComponent from "./CellComponent";
 import {Cell} from "../models/Cell";
-import { Player } from '../models/Player';
-import CellComponent from './CellComponent';
+import {Player} from "../models/Player";
 
 interface BoardProps {
   board: Board;
@@ -26,7 +26,7 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard, currentPlayer, swapPla
       }
     }
   }
-  
+
   useEffect(() => {
     highlightCells()
   }, [selectedCell])
@@ -35,7 +35,7 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard, currentPlayer, swapPla
     board.highlightCells(selectedCell)
     updateBoard()
   }
-  
+
   function updateBoard() {
     const newBoard = board.getCopyBoard()
     setBoard(newBoard)
@@ -63,7 +63,3 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard, currentPlayer, swapPla
 };
 
 export default BoardComponent;
-function swapPlayer() {
-  throw new Error('Function not implemented.');
-}
-

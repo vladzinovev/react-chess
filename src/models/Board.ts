@@ -1,20 +1,18 @@
 import {Cell} from "./Cell";
 import {Colors} from "./Colors";
-import { Bishop } from "./figures/Bishop";
-import { Figure } from "./figures/Figure";
-import { King } from "./figures/King";
-import { Knight } from "./figures/Knight";
-import { Pawn } from "./figures/Pawn";
-import { Queen } from "./figures/Queen";
-import { Rook } from "./figures/Rook";
-
+import {Pawn} from "./figures/Pawn";
+import {King} from "./figures/King";
+import {Queen} from "./figures/Queen";
+import {Bishop} from "./figures/Bishop";
+import {Knight} from "./figures/Knight";
+import {Rook} from "./figures/Rook";
+import {Figure} from "./figures/Figure";
 
 export class Board {
   cells: Cell[][] = []
   lostBlackFigures: Figure[] = []
   lostWhiteFigures: Figure[] = []
 
-  //создание ячеек
   public initCells() {
     for (let i = 0; i < 8; i++) {
       const row: Cell[] = []
@@ -101,5 +99,4 @@ export class Board {
     this.addQueens()
     this.addRooks()
   }
-
 }
