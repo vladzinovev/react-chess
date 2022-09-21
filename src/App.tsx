@@ -3,12 +3,20 @@ import "./App.css";
 import {Board} from "./models/Board";
 
 import BoardComponent from "./component/BoardComponent";
+import { Colors } from './models/Colors';
+import { Player } from './models/Player';
+import LostFigures from './component/LostFigures';
 
 const App=()=> {
   const [board, setBoard] = useState(new Board());
+  const [whitePlayer, setWhitePlayer] = useState(new Player(Colors.WHITE))
+  const [blackPlayer, setBlackPlayer] = useState(new Player(Colors.BLACK))
+  const [currentPlayer, setCurrentPlayer] = useState<Player | null>(null);
+
 
   useEffect(() => {
     restart()
+    setCurrentPlayer(whitePlayer);
   }, [])
 
   function restart() {
@@ -18,12 +26,29 @@ const App=()=> {
     setBoard(newBoard)
   }
 
+  function swapPlayer() {
+    setCurrentPlayer(currentPlayer?.color === Colors.WHITE ? blackPlayer : whitePlayer)
+  }
+
   return (
-    <div className="App">
+    <div className="app">
+      
       <BoardComponent
         board={board}
         setBoard={setBoard}
+        currentPlayer={currentPlayer}
+        swapPlayer={swapPlayer}
       />
+      <div>
+        <LostFigures
+          title="Черные фигуры"
+          figures={board.lostBlackFigures}
+        />
+        <LostFigures
+          title="Белые фигуры"
+          figures={board.lostWhiteFigures}
+        />
+      </div>
     </div>
   );
 }
