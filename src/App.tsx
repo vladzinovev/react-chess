@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
+import "./App.css";
 import {Board} from "./models/Board";
 
 import BoardComponent from "./component/BoardComponent";
@@ -14,6 +14,7 @@ const App=()=> {
   function restart() {
     const newBoard = new Board();
     newBoard.initCells()
+    newBoard.addFigures()
     setBoard(newBoard)
   }
 

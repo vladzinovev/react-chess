@@ -3,10 +3,17 @@ import {Cell} from "../models/Cell";
 
 
 
-const CellComponent= () => {
-  return (
-    <div className='cell'>
+interface CellProps {
+  cell: Cell;
+}
 
+const CellComponent: FC<CellProps> = ({cell}) => {
+  return (
+    <div
+      className={['cell' ? "selected" : ''].join(' ')}
+      
+    >
+       {cell.figure?.logo && <img src={cell.figure.logo} alt=""/>}
     </div>
   );
 };
